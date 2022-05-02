@@ -7,6 +7,7 @@
     using Automation.Core;
     using Automation.Core.Web;
     using OpenQA.Selenium;
+    using Serilog;
 
     /// <summary>
     /// Page Object for SuperNovaPage.
@@ -168,13 +169,16 @@
 
             foreach (var orderType in ipObj.orderTypeList)
             {
+                Log.Information($"Processing order type {orderType}");
                 _orderType.WaitForElementToBeVisible(300);
                 _orderType.SelectByText(orderType);
                 _fromDate.SetText(ipObj.startDate);
                 _toDate.SetText(ipObj.endDate);
+                Log.Information($"Start date {ipObj.startDate} - End Date {ipObj.endDate}");
 
                 foreach (var customerId in ipObj.customerIdList)
                 {
+                    Log.Information($"Processing customer id {customerId}");
                     _customerId.SelectByValue(customerId);
                     _searchButton.Click();
                     if (!_orderTable.IsVisible(10))
@@ -218,9 +222,10 @@
                                 }
 
                                 dotClicked = false;
-                                curPageNo += 1;
                                 Thread.Sleep(5000);
+                                Log.Information($"Processing page no {curPageNo}");
                                 GetDataOfCurrentPage(orderType, openOrder, closeOrder, customerId, openOrderShippingDetails);
+                                curPageNo += 1;
                                 if (page == pageCount)
                                 {
                                     endPageReached = true;

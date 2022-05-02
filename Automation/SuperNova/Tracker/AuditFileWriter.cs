@@ -1,4 +1,5 @@
 ﻿using Automation.Core.Excel;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -45,7 +46,8 @@ namespace Automation.SuperNova.Tracker
             }
             catch (Exception ex)
             {
-                throw;
+                Log.Information("Error in writing audit file.");
+                Log.Error(ex.Message + " " +  ex.StackTrace);
             }
             finally
             {

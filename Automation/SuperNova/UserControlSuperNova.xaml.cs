@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using OpenQA.Selenium;
+using Serilog;
 
 namespace Automation.SuperNova
 {
@@ -81,7 +82,7 @@ namespace Automation.SuperNova
             if (e.Error != null)
             {
                 MessageBox.Show(
-                    "Fail",
+                    "Tool Execution Fail",
                     "Run Status",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error,
@@ -90,7 +91,7 @@ namespace Automation.SuperNova
             else
             {
                 MessageBox.Show(
-                    "Pass",
+                    "Tool Execution Pass",
                     "Run Status",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information,
@@ -122,9 +123,20 @@ namespace Automation.SuperNova
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             var ipObj = e.Argument as InputObject;
+            string filePath = $@"{ipObj.outputPath}\AutomationLog.log";
+            Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                      .WriteTo.File(
+                        filePath,
+                        rollingInterval: RollingInterval.Day,
+                        rollOnFileSizeLimit: true,
+                        fileSizeLimitBytes: 123456)
+                      .CreateLogger();
+
             IWebDriver webDriver = null;
             try
             {
+                Log.Information("Process started");
                 webDriver = WebDriverUtils.DriverSetup(
                     headless: false,
                     customTimeout: 2);
@@ -132,10 +144,12 @@ namespace Automation.SuperNova
             }
             catch (Exception ex)
             {
+                Log.Error(ex.Message + " " + ex.StackTrace);
                 throw;
             }
             finally
             {
+                Log.Information("Web driver dispose");
                 webDriver?.Dispose();
             }
         }

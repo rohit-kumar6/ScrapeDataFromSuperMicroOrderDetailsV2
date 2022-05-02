@@ -1,6 +1,7 @@
 ﻿using Automation.SuperNova.PageObjects;
 using Automation.SuperNova.Tracker;
 using OpenQA.Selenium;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace Automation.SuperNova
             var openOrderShippingDetails = new List<List<string>>();
             var closeOrder = new List<List<string>>();
             new SuperNovaPage(webDriver).Execute(ipObj, openOrder, closeOrder, openOrderShippingDetails);
+            Log.Information("Writing to audit file started");
             var auditFileWriter = new AuditFileWriter();
             auditFileWriter.CreateTrackerAndWrite(ipObj, openOrder, closeOrder, openOrderShippingDetails);
         }
