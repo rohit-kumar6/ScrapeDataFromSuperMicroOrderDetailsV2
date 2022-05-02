@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="Automation.SuperNova.UserControlSuperNova"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Automation"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:wpfanimated="http://wpfanimatedgif.codeplex.com"
+             Height="auto" Width="auto">
+    <UserControl.Resources>
+        <Style x:Key="SimpleListBoxItem" TargetType="ListBoxItem">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border
+				            Name="Border" Padding="2" SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                <StackPanel>
+                    <TextBlock Text="Super Nova" FontSize="25" FontFamily="Calibri" Foreground="#FFC00000"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock FontSize="15" Margin="10 0 0 0" Text="Customer Id" VerticalAlignment="Center"/>
+                        <ListBox x:Name="coustomerId" BorderBrush="Black" BorderThickness="1" ItemContainerStyle="{StaticResource SimpleListBoxItem}" Margin="32,0,0,0" FontWeight="Heavy" SelectionMode="Extended" Height="70" Width="300" FontSize="10" >
+                            <ListBoxItem>
+                                <TextBlock Text="QT00010N00_3888"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT00010T00_2888"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT00010U00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001BN00_3888"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001BT00_2888"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001BU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001CT00_2888"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001CU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001DU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001GU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001HU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001IU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001JU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001KU00_1889"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="QT0001LU00_1889"/>
+                            </ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0, 10">
+                        <TextBlock FontSize="15" Margin="10 0 0 0" Text="Order Type" VerticalAlignment="Center"/>
+                        <ListBox x:Name="orderType" BorderBrush="Black" BorderThickness="1" ItemContainerStyle="{StaticResource SimpleListBoxItem}" Margin="40,0,0,0" FontWeight="Heavy" SelectionMode="Extended" Height="70" Width="300" FontSize="10" >
+                            <ListBoxItem>
+                                <TextBlock Text="Open Order"/>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Text="Closed Order"/>
+                            </ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel  Margin="0, 10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10">
+                            <TextBlock FontSize="15" Text="Start Date " VerticalAlignment="Center" Margin="10,0"/>
+                            <DatePicker x:Name="startDate" Margin="30,0,0,0" SelectedDateChanged = "DatePicker_SelectedDateChanged" SelectedDateFormat="Short" IsTodayHighlighted ="True" VerticalAlignment="Top" Width="143"/>
+                            <TextBlock Margin="20,0,0,0" FontSize="15" Text="End Date " VerticalAlignment="Center"/>
+                            <DatePicker x:Name="endDate" Margin="20,0,0,0" SelectedDateChanged = "DatePicker_SelectedDateChanged" SelectedDateFormat="Short" IsTodayHighlighted ="True" VerticalAlignment="Top" Width="143"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0, 10">
+                            <TextBlock FontSize="15" Text="Output Path" VerticalAlignment="Center" />
+                            <TextBlock FontSize="15" Text="*" VerticalAlignment="Center" Foreground="#FFC00000"/>
+                            <TextBox x:Name="outputPath" Width="253" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                            <Button FontFamily="Champagne &amp; Limousines" Content="Browse" Click="BrowsebtnOpenOutputFile_Click" HorizontalAlignment="Right" Height="22" Width="79" Margin ="10"/>
+                            <Button Margin="10,0" FontFamily="Champagne &amp; Limousines" Content="Open" Click="OpenbtnOutput_Click" HorizontalAlignment="Right" Height="22" Width="79"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                            <Button x:Name="startSuperNova" Content="Start" FontSize="20" Width="150" Height="50" Click="SuperNova_Start"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

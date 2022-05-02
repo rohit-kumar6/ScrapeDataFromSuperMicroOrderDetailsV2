@@ -1,0 +1,220 @@
+﻿{
+  "name": "Super Nova Page",
+  "elements": [
+	{
+    "name" : "ORDER_TYPE",
+    "value" : "//select[@id='ContentPlaceHolder1_ddlSearchType']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "FROM_DATE",
+    "value" : "//input[@id='ContentPlaceHolder1_txtFrom']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "TO_DATE",
+    "value" : "//input[@id='ContentPlaceHolder1_txtTo']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "CUSTOMER_ID",
+    "value" : "//select[@id='ContentPlaceHolder1_ddlCustomerID']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "SEARCH_BUTTON",
+    "value" : "//a[@id='linkSearch']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "ORDER_TABLE",
+    "value" : "//table[contains(@id,'ContentPlaceHolder1')]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "OPEN_ORDER_TABLE_ROW_COUNT",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr",
+    "type" : "xpath"
+    },
+    {
+    "name" : "OPEN_ORDER_SOLD_TO_ID",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr[{0}]/td[1]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "OPEN_ORDER_SALES_ORDER",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr[{0}]/td[2]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "openOrderCustomerPO",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr[{0}]/td[3]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "openOrderShipToParty",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr[{0}]/td[4]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "openOrderShipToCountry",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr[{0}]/td[5]/div",
+    "type" : "xpath"
+    },
+    {
+    "name" : "openOrderCreatedTime",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr[{0}]/td[6]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "openOrderOrderDetailsButton",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOpenOrd']/tbody/tr[{0}]/td[7]/a",
+    "type" : "xpath"
+    },
+    {
+    "name" : "openOrderAssemblyType",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOrdHeader']/tbody/tr[2]/td[2]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "openOrderOrderStatus",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOrdHeader']/tbody/tr[2]/td[6]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "closeOrderTableRowCount",
+    "value" : "//table[@id='ContentPlaceHolder1_gvCloseOrd']/tbody/tr",
+    "type" : "xpath"
+    },
+    {
+    "name" : "closeOrderSalesOrder",
+    "value" : "//table[@id='ContentPlaceHolder1_gvCloseOrd']/tbody/tr[{0}]/td[1]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "closeOrderOrderData",
+    "value" : "//table[@id='ContentPlaceHolder1_gvCloseOrd']/tbody/tr[{0}]/td[2]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "closeOrderCustomerPO",
+    "value" : "//table[@id='ContentPlaceHolder1_gvCloseOrd']/tbody/tr[{0}]/td[3]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "closeOrderAssemblyType",
+    "value" : "//table[@id='ContentPlaceHolder1_gvCloseOrd']/tbody/tr[{0}]/td[4]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "closeOrderOrderDetailsButton",
+    "value" : "//table[@id='ContentPlaceHolder1_gvCloseOrd']/tbody/tr[{0}]/td[6]/a",
+    "type" : "xpath"
+    },
+    {
+    "name" : "closeOrderOrderStatus",
+    "value" : "//table[@id='ContentPlaceHolder1_ClosedOrdInfo_gvOrdHeader']//tr[2]/td[6]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "orderItem",
+    "value" : "//div[contains(@id,'panelOrdItemList')]/div/a",
+    "type" : "xpath"
+    },
+    {
+    "name" : "orderItemHeaders",
+    "value" : "//table[contains(@id,'gvOrdDetails')]/tbody/tr[1]/th",
+    "type" : "xpath"
+    },
+    {
+    "name" : "orderItemRows",
+    "value" : "//table[contains(@id,'gvOrdDetails')]/tbody/tr",
+    "type" : "xpath"
+    },
+    {
+    "name" : "orderItemRowsValue",
+    "value" : "//table[contains(@id,'gvOrdDetails')]/tbody/tr[{0}]/td[{1}]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "orderItemHeadersValue",
+    "value" : "//table[contains(@id,'gvOrdDetails')]/tbody/tr[1]/th[{0}]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "soldToAddress",
+    "value" : "//td[@class='InfoCell AddressCell ']/div/div/div[{0}]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "shipToAddress",
+    "value" : "//td[@class='InfoCell AddressCell']/div/div/div[{0}]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "ORDER_ITEM_EXPANDED",
+    "value" : "//div[contains(@id,'panelOrdItemList')]/div//i['fa fa-minus-square']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "VIEW_DETAILS_OPENORDER_CHECKBOX",
+    "value" : "//input[@id='ContentPlaceHolder1_chkOriginal']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "VIEW_DETAILS_CLOSEORDER_CHECKBOX",
+    "value" : "//input[@id='ContentPlaceHolder1_ClosedOrdInfo_chkOriginal']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "esd",
+    "value" : "//td[@class='InfoCell ETACell']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "message",
+    "value" : "//td[@class='InfoCell CommentsCell']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "SHIPPING_DETAILS_BUTTON",
+    "value" : "//a[@id='ContentPlaceHolder1_linkShipping']",
+    "type" : "xpath"
+    },
+    {
+    "name" : "NO_SHIPPING_DETAILS_AVAILABLE",
+    "value" : "//div[contains(text(),'No shipping data available.')]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "SHIPPING_DETAILS_VALUE",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOrdUniq']/tbody/tr[2]/td[{0}]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "SHIPPING_DETAILS_MORE_BUTTON",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOrdUniq']/tbody/tr[2]/td[9]/a",
+    "type" : "xpath"
+    },
+    {
+    "name" : "SHIPPING_DETAILS_ORDER_ROW",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOrdUniqItem']/tbody/tr",
+    "type" : "xpath"
+    },
+    {
+    "name" : "SHIPPING_DETAILS_ORDER_VALUE",
+    "value" : "//table[@id='ContentPlaceHolder1_gvOrdUniqItem']/tbody/tr[{0}]/td[{1}]",
+    "type" : "xpath"
+    },
+    {
+    "name" : "PAGE_COUNT",
+    "value" : "(//tr[@class='gridPager']/td/table/tbody/tr/td)",
+    "type" : "xpath"
+    },
+    {
+    "name" : "SELECT_PAGE",
+    "value" : "(//tr[@class='gridPager']/td/table/tbody/tr/td)[{0}]",
+    "type" : "xpath"
+    }
+  ]
+}
