@@ -77,6 +77,26 @@ namespace Automation.SuperNova
             startSuperNova.IsEnabled = true;
             IsEnabled = true;
             App.GetWindowInstance().ToggleToolsMenuView();
+
+            if (e.Error != null)
+            {
+                MessageBox.Show(
+                    "Fail",
+                    "Run Status",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error,
+                    MessageBoxResult.OK);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Pass",
+                    "Run Status",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information,
+                    MessageBoxResult.OK);
+            }
+
             _backgroundWorker.Dispose();
         }
 

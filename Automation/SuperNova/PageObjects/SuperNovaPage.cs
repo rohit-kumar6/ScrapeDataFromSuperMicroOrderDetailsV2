@@ -219,7 +219,7 @@
 
                                 dotClicked = false;
                                 curPageNo += 1;
-                                Thread.Sleep(1000);
+                                Thread.Sleep(5000);
                                 GetDataOfCurrentPage(orderType, openOrder, closeOrder, customerId, openOrderShippingDetails);
                                 if (page == pageCount)
                                 {
@@ -288,7 +288,7 @@
             List<List<string>> openOrder, string customerId, List<List<string>> openOrderShippingDetails)
         {
             int rowCount = _openOrderTableRowCount.GetSize();
-            if (_pageCount.IsVisible(1))
+            if (_pageCount.IsVisible(10))
             {
                 rowCount -= 1;
             }
