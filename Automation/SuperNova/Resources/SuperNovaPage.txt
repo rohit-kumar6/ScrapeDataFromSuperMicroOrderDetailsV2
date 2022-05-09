@@ -122,6 +122,16 @@
     "type" : "xpath"
     },
     {
+    "name" : "orderItemTable",
+    "value" : "//table[contains(@id,'gvOrdDetails')]/tbody",
+    "type" : "xpath"
+    },
+    {
+    "name" : "orderItemTableNoDataAvailable",
+    "value" : "//table[contains(@id,'gvOrdDetails')]/tbody/tr[1]/td//div[contains(text(),'No Data Available.')]",
+    "type" : "xpath"
+    },
+    {
     "name" : "orderItemHeaders",
     "value" : "//table[contains(@id,'gvOrdDetails')]/tbody/tr[1]/th",
     "type" : "xpath"

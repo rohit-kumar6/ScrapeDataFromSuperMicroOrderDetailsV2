@@ -61,7 +61,7 @@ namespace Automation.SuperNova.Tracker
             var headers = new string[,]
             {
                      {
-                        "Sold To ID", "Sales Order", "Order Date", "Customer PO", "Assembly Type",
+                        "Customer Id", "Sold To ID", "Sales Order", "Order Date", "Customer PO", "Assembly Type",
                         "Order Status", "Sold-To", "Ship-To", "Line No.",
                         "Item Number", "Description", "QTY Ordered", "QTY Shipped",
                         "B/O QTY", "Unit Price", "Extended Price"
@@ -76,7 +76,7 @@ namespace Automation.SuperNova.Tracker
             var headers = new string[,]
             {
                      {
-                        "Sold To ID", "Sales Order", "PICKUNIQ", "ORDUNIQ", "Status",
+                        "Customer Id", "Sold To ID", "PICKUNIQ", "ORDUNIQ", "Status",
                         "VIADESC", "Comment", "SDATE", "Invoice Number", "Tracking Number",
                         "Order Line", "QTY Ordered", "QTY Shipped", "Item",
                         "Category", "Description", "Timestamps"
@@ -91,7 +91,7 @@ namespace Automation.SuperNova.Tracker
             var headers = new string[,]
             {
                      {
-                        "Sold To ID", "Sales Order", "Customer PO", "Ship To Party",
+                        "Customer Id", "Sold To ID", "Sales Order", "Customer PO", "Ship To Party",
                         "Ship To Country", "Created Time", "Assembly Type",
                         "Order Status", "Sold-To", "Ship-To", "ESD", "Message",
                         "Line No.", "Item Number", "Description", "QTY Ordered",

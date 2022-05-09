@@ -117,6 +117,12 @@
         [Locator("orderItem")]
         private readonly UIElement _orderItem;
         
+        [Locator("orderItemTable")]
+        private readonly UIElement _orderItemTable;
+        
+        [Locator("orderItemTableNoDataAvailable")]
+        private readonly UIElement _orderItemTableNoDataAvailable;
+        
         [Locator("orderItemHeaders")]
         private readonly UIElement _orderItemHeaders;
         
@@ -268,7 +274,7 @@
 
             for (int i = 2; i <= rowCount; i++)
             {
-                var closeOrderTemp = closeOrder;
+                var closeOrderTemp = closeOrder.ToList();
                 _retryExecutor.Retry(() =>
                 {
                     var tempList = new List<string>();
@@ -284,7 +290,7 @@
                     tempList.Add(GetShipToAddress());
                     GetOrderItems(tempList, closeOrder, true);
                 }, () => {
-                    closeOrder = closeOrderTemp;
+                    closeOrder = closeOrderTemp.ToList();
                 });
             }
         }
@@ -300,8 +306,8 @@
 
             for (int i = 2; i <= rowCount; i++)
             {
-                var openOrderTemp = openOrder;
-                var openOrderShippingDetailsTemp = openOrderShippingDetails;
+                var openOrderTemp = openOrder.ToList();
+                var openOrderShippingDetailsTemp = openOrderShippingDetails.ToList();
                 _retryExecutor.Retry(() =>
                 {
                     var tempList = new List<string>();
@@ -329,8 +335,8 @@
                     GetOrderItems(tempList, openOrder, false);
                     GetShippingDetails(customerId, salesOrder, openOrderShippingDetails);
                 }, () => {
-                    openOrder = openOrderTemp;
-                    openOrderShippingDetails = openOrderShippingDetailsTemp;
+                    openOrder = openOrderTemp.ToList();
+                    openOrderShippingDetails = openOrderShippingDetailsTemp.ToList();
                 });
             }
         }
@@ -408,16 +414,27 @@
         {
             Thread.Sleep(2000);
             _orderItem.WaitAndClick(60);
-            _orderItemHeaders.WaitForElementToBeVisible(120);
+            _orderItemTable.WaitForElementToBeVisible(120);
 
             try
             {
+                if (_orderItemTableNoDataAvailable.IsVisible(2))
+                {
+                    orderDetailsList.Add(tempList.ToList());
+                    return;
+                }
+
+                if (!_orderItemHeaders.IsVisible(5))
+                {
+                    throw new Exception("Not opened");
+                }
+
                 _orderItemHeaders.GetSize();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 _orderItem.WaitAndClick(60);
-                _orderItemHeaders.WaitForElementToBeVisible(120);
+                _orderItemTable.WaitForElementToBeVisible(120);
             }
 
             if (closedOrder && _viewDetailsCloseOrderCheckbox.IsVisible(5))
@@ -430,10 +447,16 @@
             }
 
             Thread.Sleep(2000);
-            if (!_orderItemHeaders.IsVisible(2))
+            if (!_orderItemTable.IsVisible(2))
             {
                 _orderItem.WaitAndClick(60);
-                _orderItemHeaders.WaitForElementToBeVisible(120);
+                _orderItemTable.WaitForElementToBeVisible(120);
+            }
+
+            if (_orderItemTableNoDataAvailable.IsVisible(2))
+            {
+                orderDetailsList.Add(tempList.ToList());
+                return;
             }
 
             int headersCount = _orderItemHeaders.GetSize();
