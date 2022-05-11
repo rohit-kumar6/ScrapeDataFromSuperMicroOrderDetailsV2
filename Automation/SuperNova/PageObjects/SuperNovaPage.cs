@@ -279,7 +279,9 @@
                 {
                     var tempList = new List<string>();
                     tempList.Add(customerId);
-                    tempList.Add(GetDynamicUIElement(_closeOrderSalesOrder, i).GetText());
+                    var salesOrder = GetDynamicUIElement(_closeOrderSalesOrder, i);
+                    salesOrder.ScrollIntoView();
+                    tempList.Add(salesOrder.GetText());
                     tempList.Add(GetDynamicUIElement(_closeOrderOrderData, i).GetText());
                     tempList.Add(GetDynamicUIElement(_closeOrderCustomerPO, i).GetText());
                     tempList.Add(GetDynamicUIElement(_closeOrderAssemblyType, i).GetText());
@@ -312,7 +314,9 @@
                 {
                     var tempList = new List<string>();
                     tempList.Add(customerId);
-                    tempList.Add(GetDynamicUIElement(_openOrderSoldToId, i).GetText());
+                    var soldToId = GetDynamicUIElement(_openOrderSoldToId, i);
+                    soldToId.ScrollIntoView();
+                    tempList.Add(soldToId.GetText());
                     string salesOrder = GetDynamicUIElement(_openOrderSalesOrder, i).GetText();
                     tempList.Add(salesOrder);
                     tempList.Add(GetDynamicUIElement(_openOrderCustomerPO, i).GetText());
@@ -343,6 +347,7 @@
 
         private void GetShippingDetails(string customerId, string salesOrder, List<List<string>> openOrderShippingDetails)
         {
+            _shippingDetailsButton.ScrollIntoView();
             _shippingDetailsButton.WaitAndClick(10);
             if (_NoshippingDetailsButton.IsVisible(5))
             {
@@ -360,6 +365,7 @@
             tempList.Add(GetDynamicUIElement(_shippingDetailsValue, 6).GetText());
             tempList.Add(GetDynamicUIElement(_shippingDetailsValue, 7).GetText());
             tempList.Add(GetDynamicUIElement(_shippingDetailsValue, 8).GetText());
+            _shippingDetailsMoreButton.ScrollIntoView();
             _shippingDetailsMoreButton.Click();
             Thread.Sleep(2000);
 
@@ -413,8 +419,10 @@
         private void GetOrderItems(List<string> tempList, List<List<string>> orderDetailsList, bool closedOrder)
         {
             Thread.Sleep(2000);
+            _orderItem.ScrollIntoView();
             _orderItem.WaitAndClick(60);
             _orderItemTable.WaitForElementToBeVisible(120);
+            _orderItemTable.ScrollIntoView();
 
             try
             {
@@ -433,8 +441,10 @@
             }
             catch (Exception ex)
             {
+                _orderItem.ScrollIntoView();
                 _orderItem.WaitAndClick(60);
                 _orderItemTable.WaitForElementToBeVisible(120);
+                _orderItemTable.ScrollIntoView();
             }
 
             if (closedOrder && _viewDetailsCloseOrderCheckbox.IsVisible(5))
@@ -449,8 +459,10 @@
             Thread.Sleep(2000);
             if (!_orderItemTable.IsVisible(2))
             {
+                _orderItem.ScrollIntoView();
                 _orderItem.WaitAndClick(60);
                 _orderItemTable.WaitForElementToBeVisible(120);
+                _orderItemTable.ScrollIntoView();
             }
 
             if (_orderItemTableNoDataAvailable.IsVisible(2))
