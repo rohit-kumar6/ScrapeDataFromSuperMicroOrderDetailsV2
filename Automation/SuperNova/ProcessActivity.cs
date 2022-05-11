@@ -29,10 +29,16 @@ namespace Automation.SuperNova
             var openOrder = new List<List<string>>();
             var openOrderShippingDetails = new List<List<string>>();
             var closeOrder = new List<List<string>>();
-            new SuperNovaPage(webDriver).Execute(ipObj, openOrder, closeOrder, openOrderShippingDetails);
-            Log.Information("Writing to audit file started");
-            var auditFileWriter = new AuditFileWriter();
-            auditFileWriter.CreateTrackerAndWrite(ipObj, openOrder, closeOrder, openOrderShippingDetails);
+            try
+            {
+                new SuperNovaPage(webDriver).Execute(ipObj, openOrder, closeOrder, openOrderShippingDetails);
+            }
+            finally
+            {
+                Log.Information("Writing to audit file started");
+                var auditFileWriter = new AuditFileWriter();
+                auditFileWriter.CreateTrackerAndWrite(ipObj, openOrder, closeOrder, openOrderShippingDetails);
+            }
         }
     }
 }
