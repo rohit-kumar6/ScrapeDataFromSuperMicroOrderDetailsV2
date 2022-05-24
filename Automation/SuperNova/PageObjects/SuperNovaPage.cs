@@ -149,6 +149,9 @@
         
         [Locator("SELECT_PAGE")]
         private readonly UIElement _selectPage;
+        
+        [Locator("SDATE")]
+        private readonly UIElement _sdate;
 
         private readonly IWebDriver _webDriver;
         private readonly RetryExecutor _retryExecutor;
@@ -189,7 +192,7 @@
                     _searchButton.Click();
                     if (!_orderTable.IsVisible(10))
                     {
-                        return;
+                        continue;
                     }
 
                     GetDataOfCurrentPage(orderType, openOrder, closeOrder, customerId, openOrderShippingDetails);
@@ -290,6 +293,7 @@
                     tempList.Add(_closeOrderOrderStatus.GetText());
                     tempList.Add(GetSoldToAddress());
                     tempList.Add(GetShipToAddress());
+                    tempList.Add(_sdate.GetText());
                     GetOrderItems(tempList, closeOrder, true);
                 }, () => {
                     closeOrder = closeOrderTemp.ToList();

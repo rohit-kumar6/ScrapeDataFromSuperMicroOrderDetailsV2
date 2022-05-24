@@ -61,8 +61,8 @@ namespace Automation.SuperNova.Tracker
             var headers = new string[,]
             {
                      {
-                        "Customer Id", "Sold To ID", "Sales Order", "Order Date", "Customer PO", "Assembly Type",
-                        "Order Status", "Sold-To", "Ship-To", "Line No.",
+                        "Customer Id", "Sales Order", "Order Date", "Customer PO", "Assembly Type",
+                        "Order Status", "Sold-To", "Ship-To", "SDATE", "Line No.",
                         "Item Number", "Description", "QTY Ordered", "QTY Shipped",
                         "B/O QTY", "Unit Price", "Extended Price"
                      },

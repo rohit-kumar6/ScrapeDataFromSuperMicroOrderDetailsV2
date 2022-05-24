@@ -225,6 +225,11 @@
     "name" : "SELECT_PAGE",
     "value" : "(//tr[@class='gridPager']/td/table/tbody/tr/td)[{0}]",
     "type" : "xpath"
+    },
+    {
+    "name" : "SDATE",
+    "value" : "//table[@id='ContentPlaceHolder1_ClosedOrdInfo_gvOrdUniq']//tr[2]/td[2]",
+    "type" : "xpath"
     }
   ]
 }
