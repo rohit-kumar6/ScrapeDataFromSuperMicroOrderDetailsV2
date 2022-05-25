@@ -174,26 +174,29 @@
             List<List<string>> closeOrder,
             List<List<string>> openOrderShippingDetails)
         {
-            OpenWebPage(new Uri("https://customerportal.supermicro.com/SO/CustOrders.aspx"));
-
             foreach (var orderType in ipObj.orderTypeList)
             {
                 Log.Information($"Processing order type {orderType}");
-                _orderType.WaitForElementToBeVisible(300);
-                _orderType.SelectByText(orderType);
-                _fromDate.SetText(ipObj.startDate);
-                _toDate.SetText(ipObj.endDate);
+                _retryExecutor.Retry(() =>
+                {
+                    OpenWebPage(new Uri("https://customerportal.supermicro.com/SO/CustOrders.aspx"));
+                    _orderType.WaitForElementToBeVisible(300);
+                    _orderType.SelectByText(orderType);
+                    _fromDate.SetText(ipObj.startDate);
+                    _toDate.SetText(ipObj.endDate);
+                });
+                
                 Log.Information($"Start date {ipObj.startDate} - End Date {ipObj.endDate}");
 
                 foreach (var customerId in ipObj.customerIdList)
                 {
                     Log.Information($"Processing customer id {customerId}");
-                    _customerId.SelectByValue(customerId);
-                    _searchButton.Click();
-                    if (!_orderTable.IsVisible(10))
+
+                    _retryExecutor.Retry(() =>
                     {
-                        continue;
-                    }
+                        _customerId.SelectByValue(customerId);
+                        _searchButton.Click();
+                    });
 
                     GetDataOfCurrentPage(orderType, openOrder, closeOrder, customerId, openOrderShippingDetails);
                     int curPageNo = 2;
